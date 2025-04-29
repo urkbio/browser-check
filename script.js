@@ -2,8 +2,32 @@
 const parser = new UAParser();
 const result = parser.getResult();
 const uaInfo = document.getElementById('ua-info');
+
+// 获取Chromium版本
+function getChromiumVersion(ua) {
+  // 检查是否为基于Chromium的浏览器
+  const isChromiumBased = /Chrome\/([0-9.]+)/.test(ua) || /Edg\/([0-9.]+)/.test(ua);
+  if (!isChromiumBased) return null;
+  
+  // 提取Chrome版本号
+  const chromeMatch = ua.match(/Chrome\/([0-9.]+)/);
+  if (chromeMatch) return chromeMatch[1];
+  
+  // 对于Edge浏览器，提取其版本号作为Chromium版本
+  const edgeMatch = ua.match(/Edg\/([0-9.]+)/);
+  if (edgeMatch) return edgeMatch[1];
+  
+  return null;
+}
+
+// 获取浏览器和引擎信息
+const chromiumVersion = getChromiumVersion(navigator.userAgent);
+const engineInfo = result.engine.name === 'Blink' && chromiumVersion
+  ? `Chromium ${chromiumVersion}`
+  : `${result.engine.name} ${result.engine.version}`;
+
 uaInfo.innerText =
-  `浏览器: ${result.browser.name} ${result.browser.version}，引擎: ${result.engine.name} ${result.engine.version}，` +
+  `浏览器: ${result.browser.name} ${result.browser.version}，引擎: ${engineInfo}，` +
   `系统: ${result.os.name} ${result.os.version}`;
 
 // 2. 检测动态 import() 支持的辅助函数
