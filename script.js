@@ -26,9 +26,27 @@ const engineInfo = result.engine.name === 'Blink' && chromiumVersion
   ? `Chromium ${chromiumVersion}`
   : `${result.engine.name} ${result.engine.version}`;
 
-uaInfo.innerText =
-  `浏览器: ${result.browser.name} ${result.browser.version}，引擎: ${engineInfo}，` +
-  `系统: ${result.os.name} ${result.os.version}`;
+// 初始化UA信息显示
+function updateUAInfo(ipAddress = '') {
+  uaInfo.innerText =
+    `浏览器: ${result.browser.name} ${result.browser.version}，引擎: ${engineInfo}，
+` +
+    `系统: ${result.os.name} ${result.os.version}，
+` +
+    `用户代理字符串: ${navigator.userAgent}
+` +
+    `浏览器语言: ${navigator.language}`;
+}
+
+// 初始显示，不包含IP
+updateUAInfo();
+
+// 监听IP信息加载
+window.addEventListener('load', () => {
+  if (typeof returnCitySN !== 'undefined' && returnCitySN.cip) {
+    updateUAInfo(returnCitySN.cip);
+  }
+});
 
 // 2. 检测动态 import() 支持的辅助函数
 function supportsDynamicImport() {
