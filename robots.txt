@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://check.joomaen.com/sitemap.xml

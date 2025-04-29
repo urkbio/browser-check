@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>浏览器检测工具</title>
+  <meta name="description" content="一款专业的浏览器检测工具，可检测浏览器内核版本、JavaScript特性支持情况。A professional browser detection tool for checking browser engine version and JavaScript feature support.">
+  <meta name="keywords" content="浏览器检测,browser detection,浏览器特性,browser features,浏览器兼容性,browser compatibility,JavaScript特性检测,JavaScript feature detection">
+  <meta name="author" content="Browser Check Tool">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph Protocol -->
+  <meta property="og:title" content="浏览器检测工具 | Browser Detection Tool">
+  <meta property="og:description" content="检测浏览器内核版本和特性支持情况 | Check browser engine version and feature support">
+  <meta property="og:type" content="website">
+  
+  <!-- Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794157925903709"
+     crossorigin="anonymous"></script>
+  
+  <!-- 结构化数据 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Browser Detection Tool",
+    "description": "A professional browser detection tool for checking browser engine version and JavaScript feature support.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>浏览器环境检测</h1>
+  <div id="ua-info"></div>
+  <h2>核心特性支持</h2>
+  <ul id="feature-list"></ul>
+
+  <!-- 引入 UAParser.js 库（CDN） -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.min.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
